@@ -19,13 +19,53 @@ import javax.sound.sampled.DataLine.Info;
 import static javax.sound.sampled.AudioSystem.getAudioInputStream;
 import static javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED;
 
+
+
+
 /*
     To compile: javac SpotifyLikeApp.java
     To run: java SpotifyLikeApp
  */
 
 // declares a class for the app
+
+
+
 public class SpotifyLikeApp {
+
+
+    public static JSONArray ReadJSONArrayFile(String fileName) {
+
+        /* 
+        read the birthday.json file and iterate over it
+    
+        parsing is converting
+        */
+    
+        //JSON parser object to parse read file
+        JSONParser jsonParser = new JSONParser();
+    
+        JSONArray songList = null;
+         
+        try (FileReader reader = new FileReader(fileName))
+        {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
+    
+            songList = (JSONArray) obj;
+            System.out.println(songList);
+    
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    
+        return songList;
+    
+    }
 
     // global variables for the app
     String status;
@@ -119,7 +159,7 @@ public class SpotifyLikeApp {
     public static void play() {
 
         // open the audio file
-        final File file = new File("./src/library/spotify_fma_track1_cropped.wav");
+        final File file = new File("./src/library/blues.wav");
 
         try {
         
@@ -157,38 +197,7 @@ public class SpotifyLikeApp {
 //     */
 
 
-//     public static JSONArray ReadJSONArrayFile(String fileName) {
 
-//         /* 
-//         read the birthday.json file and iterate over it
-
-//         parsing is converting
-//         */
-
-//         //JSON parser object to parse read file
-//         JSONParser jsonParser = new JSONParser();
-
-//         JSONArray birthdayList = null;
-         
-//         try (FileReader reader = new FileReader(fileName))
-//         {
-//             //Read JSON file
-//             Object obj = jsonParser.parse(reader);
- 
-//             birthdayList = (JSONArray) obj;
-//             // System.out.println(birthdayList);
- 
-//         } catch (FileNotFoundException e) {
-//             e.printStackTrace();
-//         } catch (IOException e) {
-//             e.printStackTrace();
-//         } catch (ParseException e) {
-//             e.printStackTrace();
-//         }
-
-//         return birthdayList;
-
-//     }
 
 //     public static void main(final String[] args) {
 

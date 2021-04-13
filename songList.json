@@ -1,17 +1,23 @@
 [
   {
-    "title": "Peyton Jenkins",
-    "artist": "9/22/2013",
-    "year": "Peyton Jenkins",
-    "genre": "Peyton Jenkins",
-    "filePath": "Peyton Jenkins",
+    "title": "Nights of Gladness: Waltz",
+    "artist": "National Promenade Band",
+    "year": "n/a",
+    "genre": "instrumental",
+    "filePath": "./src/library/waltz.wav"
   },
   {
-    "songName": "Neil Harber",
-    "birthday": "5/10/2012"
+    "title": "Who Threw the Overalls in Mrs. Murphy's Chowder?",
+    "artist": "Favor, Edward M.",
+    "year": "1901",
+    "genre": "Popular music -- 1901-1910",
+    "filePath": "./src/library/overall.wav"
   },
   {
-    "songName": "Camilla Schmeler",
-    "birthday": "11/24/2012"
+    "title": "Blues my Naughty Sweetie Gives to Me",
+    "artist": "Harry Raderman's Jazz Orchestra",
+    "year": "1920",
+    "genre": "Blues",
+    "filePath": "./src/library/blues.wav"
   }
 ]

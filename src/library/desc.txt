@@ -16,3 +16,35 @@ Price	$0.00
 
 
 
+
+Composer	Giefer, George L.
+Performer	Favor, Edward M., 1856-1936
+Title	Who Threw the Overalls in Mrs. Murphy's Chowder?
+Note	Recorded c. February 1901.
+Language	English
+LoC Class	M: Music
+Subject	Songs with piano
+Subject	Popular music -- 1901-1910
+Category	Sound
+EBook-No.	10301
+Release Date	Nov 1, 2003
+Copyright Status	Public domain in the USA.
+Downloads	17 downloads in the last 30 days.
+Price	$0.00
+
+
+
+
+
+Author	Harry Raderman's Jazz Orchestra
+Title	Blues my Naughty Sweetie Gives to Me
+Note	Recorded c. 1920.
+Language	English
+LoC Class	M: Music
+Subject	Blues (Music)
+Category	Sound
+EBook-No.	10248
+Release Date	Nov 1, 2003
+Copyright Status	Public domain in the USA.
+Downloads	15 downloads in the last 30 days.
+Price	$0.00
