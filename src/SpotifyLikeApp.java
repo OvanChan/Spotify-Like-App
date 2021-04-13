@@ -1,6 +1,11 @@
+import java.io.*;
+import java.util.*;
+import org.json.simple.*;
+import org.json.simple.parser.*;
 import java.io.File; 
 import java.io.IOException; 
 import java.util.Scanner; 
+
   
 import javax.sound.sampled.AudioInputStream; 
 import javax.sound.sampled.AudioSystem; 
@@ -57,10 +62,11 @@ public class SpotifyLikeApp {
 
     /*
      * displays the menu for the app
+     * How play or rewind or fastforward (look this up)
      */
     public static void menu() {
 
-        System.out.println("---- SpotifyLikeApp ----");
+        System.out.println("---- Yo Olde Public Domain Music Player ----");
         System.out.println("[H]ome");
         System.out.println("[S]earch by title");
         System.out.println("[L]ibrary");
@@ -89,6 +95,7 @@ public class SpotifyLikeApp {
 
             case "l":
                 System.out.println("-->Library<--");
+                // loop through the titles (a la birthday look up)
                 break;
                 
             case "p":
@@ -135,3 +142,112 @@ public class SpotifyLikeApp {
 
 }
 
+
+
+
+// public class BirthdayExample {
+
+//     /* 
+//     Dunc: ReadJSONFile
+//     Desc: Reads a json file storing an array and returns an object 
+//     that can be iterated over
+
+//     Class are groups of functions,
+//     1 code contains one main function
+//     */
+
+
+//     public static JSONArray ReadJSONArrayFile(String fileName) {
+
+//         /* 
+//         read the birthday.json file and iterate over it
+
+//         parsing is converting
+//         */
+
+//         //JSON parser object to parse read file
+//         JSONParser jsonParser = new JSONParser();
+
+//         JSONArray birthdayList = null;
+         
+//         try (FileReader reader = new FileReader(fileName))
+//         {
+//             //Read JSON file
+//             Object obj = jsonParser.parse(reader);
+ 
+//             birthdayList = (JSONArray) obj;
+//             // System.out.println(birthdayList);
+ 
+//         } catch (FileNotFoundException e) {
+//             e.printStackTrace();
+//         } catch (IOException e) {
+//             e.printStackTrace();
+//         } catch (ParseException e) {
+//             e.printStackTrace();
+//         }
+
+//         return birthdayList;
+
+//     }
+
+//     public static void main(final String[] args) {
+
+//         //
+//         // how to read user input from keyboard
+//         //
+//         System.out.println("Reading user input into a string");
+
+//         // get user input
+//         Scanner input = new Scanner(System.in);
+//         System.out.print("Enter a name:");
+//         String key = input.nextLine();
+    
+        
+//         // print user inputp
+//         System.out.println("name = " + key);
+    
+//         // close the scanner
+//         input.close();
+
+
+//         //
+//         // reads a json data file
+//         //
+
+//         // this is the relative path to the .json file.  If this does not work for you, use
+//         // a full path to the file. Example is below.
+        
+//         // relative path
+//         String pathToFile = "./src/birthday.json";
+
+//         // full path
+//         // String pathToFile = "E:/Users/jerome/GitHub/evc-cit044-java-references-and-data-structures/src/birthday.json";
+
+
+//         JSONArray jsonData = ReadJSONArrayFile(pathToFile);
+
+
+//         // loop over list
+//         String birthday;
+//         String name;
+//         Map<String, String> lookUp = new HashMap<String, String>();
+//         JSONObject obj;
+//                 for (Integer i = 0; i < jsonData.size() ; i++) {
+
+//             // parse the object and pull out the name and birthday
+//             obj = (JSONObject) jsonData.get(i);
+//             birthday = (String) obj.get("birthday");
+//             name = (String) obj.get("name");
+
+//             // System.out.println("name = " + name);
+//             // System.out.println("birthday = " + birthday);
+            
+           
+//             lookUp.put(name, birthday);
+
+//         }
+               
+
+//         System.out.println("Your input is = " + key);
+//         String result = lookUp.get(key);
+//         System.out.println("This person's birthday is on " + result);
