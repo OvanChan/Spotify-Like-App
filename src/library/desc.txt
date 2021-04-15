@@ -48,3 +48,37 @@ Release Date	Nov 1, 2003
 Copyright Status	Public domain in the USA.
 Downloads	15 downloads in the last 30 days.
 Price	$0.00
+
+
+    public static JSONArray ReadJSONArrayFile(String fileName) {
+
+        /* 
+        read the birthday.json file and iterate over it
+
+        parsing is converting
+        */
+
+        //JSON parser object to parse read file
+        JSONParser jsonParser = new JSONParser();
+
+        JSONArray birthdayList = null;
+         
+        try (FileReader reader = new FileReader(fileName))
+        {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
+ 
+            birthdayList = (JSONArray) obj;
+            System.out.println(birthdayList);
+ 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return birthdayList;
+
+    }
