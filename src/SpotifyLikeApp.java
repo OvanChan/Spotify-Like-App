@@ -25,42 +25,39 @@ import static javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED;
 // declares a class for the app
 
 public class SpotifyLikeApp {
-
-    public static JSONArray ReadJSONArrayFile(String fileName) {
-
-        //JSON parser object to parse read file
-        JSONParser jsonParser = new JSONParser();
-
-        JSONArray songList = null;
-
-        try (FileReader reader = new FileReader(fileName))
-        {
-            //Read JSON file
-            Object obj = jsonParser.parse(reader);
  
-            songList = (JSONArray) obj;
-            System.out.println(songList);
- 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        
-        return songList;
-        
-    }
 
     // global variables for the app
     String status;
     Long position;
     static Clip audioClip;
+    Integer songSelection;
+    
+    class songList {
+        Map<String, song> songList;
+    }
+    
+    class song {
+        String artist;
+        String album;
+        String year;
+        String genre;
+        String filePath;
+    }
 
     // "main" makes this class a java app that can be executed
     public static void main(final String[] args) {
         
+        try {
+            // create Gson instance
+            FileReader songListFile=new FileReader("songList.json");   
+            Gson gson = new Gson();
+            songList songList = gson.fromJson(songListFile, songList.class);
+                  
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
         // create a scanner for user input
         Scanner input = new Scanner(System.in);
 
@@ -126,6 +123,13 @@ public class SpotifyLikeApp {
                 
             case "p":
                 System.out.println("-->Play<--");
+                
+                Scanner songPick = new Scanner(System.in);
+                System.out.println("Play which song (enter 1, 2, or 3)?");
+                Integer songSelection = songPick.nextInt();
+        
+                songPick.close();
+
                 play();
                 break;
 
@@ -145,7 +149,21 @@ public class SpotifyLikeApp {
     public static void play() {
 
         // open the audio file
-        final File file = new File("./src/library/blues.wav");
+
+        switch(songSelection) {
+        case 1:
+            File file = new File("./src/library/blues.wav");
+        case 2:
+            File file = new File("./src/library/overall.wav");
+        case 3:
+            File file = new File("./src/library/waltz.wav");
+        default:
+            System.out.println("Invalid Entry, playing Blues my Naughty Sweetie Gives to Me");
+            File file = new File("./src/library/blues.wav");
+        }
+
+        // final File file = new File("./src/library/blues.wav");
+
 
         try {
         

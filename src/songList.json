@@ -1,23 +1,30 @@
 [
   {
-    "title": "Nights of Gladness: Waltz",
-    "artist": "National Promenade Band",
-    "year": "n/a",
-    "genre": "instrumental",
-    "filePath": "./src/library/waltz.wav"
+    "songList" : {
+      "song1" : {
+      "title": "Nights of Gladness: Waltz",
+      "artist": "National Promenade Band",
+      "year": "n/a",
+      "genre": "instrumental",
+      "filePath": "./src/library/waltz.wav"
+            }
   },
-  {
+
+  "song2" : {
     "title": "Who Threw the Overalls in Mrs. Murphy's Chowder?",
     "artist": "Favor, Edward M.",
     "year": "1901",
     "genre": "Popular music -- 1901-1910",
     "filePath": "./src/library/overall.wav"
-  },
-  {
+              },
+
+  "song3" : {  
     "title": "Blues my Naughty Sweetie Gives to Me",
     "artist": "Harry Raderman's Jazz Orchestra",
     "year": "1920",
     "genre": "Blues",
     "filePath": "./src/library/blues.wav"
   }
+  }
+  
 ]
