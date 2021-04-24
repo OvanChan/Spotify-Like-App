@@ -76,7 +76,7 @@ public class SpotifyLikeApp {
         
         // create a scanner for user input
         Scanner input = new Scanner(System.in);
-
+        
         String userInput = "";
         while (!userInput.equals("q")) {
 
@@ -143,7 +143,7 @@ public class SpotifyLikeApp {
                 System.out.println("Play which song?");
                 songSelect = input.nextLine();
                 System.out.println("You've selected:" + songSelect);
-
+                
                 // Scanner songPick = new Scanner(System.in);
                 // System.out.println("Play which song?");
                 // Integer songSelection = songPick.nextInt();
@@ -165,7 +165,7 @@ public class SpotifyLikeApp {
 
     public static void Library() {
             String pathToFile = "src/songList.json";
-    
+
             JSONArray jsonData = ReadJSONArrayFile(pathToFile);
     
             // loop over list
@@ -202,10 +202,12 @@ public class SpotifyLikeApp {
      * plays an audio file
      */
     public static void play() {
+        
+        SpotifyLikeApp.Library(songSelect)
 
-        // open the audio file
-
-        final File file = new File("./src/library/blues.wav");
+                // open the audio file
+        
+        final File file = new File();
 
 
         try {
