@@ -121,7 +121,7 @@ public class SpotifyLikeApp {
      * handles the user input for the app
      */
     public static void handleMenu(String userInput, Scanner input) {
-        String songSelect;
+        
         
         switch(userInput) {
 
@@ -139,17 +139,13 @@ public class SpotifyLikeApp {
                 break;
                 
             case "p":
-                System.out.println("-->Play<--");
-                System.out.println("Play which song?");
-                songSelect = input.nextLine();
-                System.out.println("You've selected:" + songSelect);
-                
+            
                 // Scanner songPick = new Scanner(System.in);
                 // System.out.println("Play which song?");
                 // Integer songSelection = songPick.nextInt();
                 // songPick.close();
 
-                play();
+                play(input);
                 break;
 
             case "q":
@@ -201,13 +197,18 @@ public class SpotifyLikeApp {
     /*
      * plays an audio file
      */
-    public static void play() {
+    public static void play(Scanner input) {
+        // Scanner input;
+        String songSelect;
+        System.out.println("-->Play<--");
+        System.out.println("Play which song?");
+        songSelect = input.nextLine();
+        System.out.println("You've selected:" + songSelect);
         
-        SpotifyLikeApp.Library(songSelect)
 
                 // open the audio file
         
-        final File file = new File();
+        final File file = new File("./src/library/blues.wav");
 
 
         try {
