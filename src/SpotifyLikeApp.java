@@ -74,6 +74,10 @@ public class SpotifyLikeApp {
     // "main" makes this class a java app that can be executed
     public static void main(final String[] args) {
         
+        // Read the JSON data file
+        String pathToFile = "src/songList.json";
+        JSONArray jsonData = ReadJSONArrayFile(pathToFile);
+
         // create a scanner for user input
         Scanner input = new Scanner(System.in);
         
@@ -89,7 +93,7 @@ public class SpotifyLikeApp {
             userInput.toLowerCase();
 
             // do something
-            handleMenu(userInput, input);
+            handleMenu(userInput, input, jsonData);
 
         }
 
@@ -120,7 +124,7 @@ public class SpotifyLikeApp {
     /*
      * handles the user input for the app
      */
-    public static void handleMenu(String userInput, Scanner input) {
+    public static void handleMenu(String userInput, Scanner input, JSONArray jsonData) {
         
         
         switch(userInput) {
@@ -135,7 +139,7 @@ public class SpotifyLikeApp {
 
             case "l":
                 System.out.println("-->Library<--");
-                Library();
+                Library(jsonData);
                 break;
                 
             case "p":
@@ -159,10 +163,8 @@ public class SpotifyLikeApp {
     }
 
 
-    public static void Library() {
-            String pathToFile = "src/songList.json";
-
-            JSONArray jsonData = ReadJSONArrayFile(pathToFile);
+    public static void Library(JSONArray jsonData) {
+            
     
             // loop over list
             String title;
@@ -206,8 +208,7 @@ public class SpotifyLikeApp {
         System.out.println("You've selected:" + songSelect);
         
 
-                // open the audio file
-        
+        // open the audio file
         final File file = new File("./src/library/blues.wav");
 
 
