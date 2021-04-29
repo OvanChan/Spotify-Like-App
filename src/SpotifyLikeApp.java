@@ -78,6 +78,7 @@ public class SpotifyLikeApp {
         String pathToFile = "src/songList.json";
         JSONArray jsonData = ReadJSONArrayFile(pathToFile);
 
+<<<<<<< HEAD
         // declaring strings
         String title;
         String artist;
@@ -99,6 +100,8 @@ public class SpotifyLikeApp {
                     lookUp.put(title, value); 
                 }
 
+=======
+>>>>>>> parent of 527a60b (Move JSON stuff to Play())
         // create a scanner for user input
         Scanner input = new Scanner(System.in);
         
@@ -183,6 +186,7 @@ public class SpotifyLikeApp {
     }
 
 
+<<<<<<< HEAD
     public static void Library() {
             
         String title;
@@ -212,12 +216,49 @@ public class SpotifyLikeApp {
 
         }
             
+=======
+    public static void Library(JSONArray jsonData) {
+            
+    
+            // loop over list
+            String title;
+            String artist;
+            String year;
+            String genre;
+            String filePath;
+                           
+            JSONObject obj;
+                for (Integer i =  0; i < jsonData.size() ; i++) {
+    
+                    // parse the object and pull out the name and birthday
+                    obj = (JSONObject) jsonData.get(i);
+                    title = (String) obj.get("title");
+                    artist = (String) obj.get("artist");
+                    year = (String) obj.get("year");
+                    genre = (String) obj.get("genre");
+                    filePath = (String) obj.get("filePath");
+    
+                      
+                    System.out.println("title = " + title);
+                    System.out.println("artist = " + artist);
+                    System.out.println("year = " + year);
+                    System.out.println("genre = " + genre);
+                    System.out.println("filePath = " + filePath);
+                    System.out.println("");
+                                                          
+                    
+                }
+            }
+>>>>>>> parent of 527a60b (Move JSON stuff to Play())
 
     /*
      * plays an audio file
      */
     public static void play(Scanner input) {
+<<<<<<< HEAD
         
+=======
+>>>>>>> parent of 527a60b (Move JSON stuff to Play())
         // Scanner input;
         String songSelect;
         System.out.println("-->Play<--");
@@ -225,6 +266,7 @@ public class SpotifyLikeApp {
         songSelect = input.nextLine();
         System.out.println("You've selected:" + songSelect);
         
+<<<<<<< HEAD
         
                            
         
@@ -234,6 +276,9 @@ public class SpotifyLikeApp {
 
        
         
+=======
+
+>>>>>>> parent of 527a60b (Move JSON stuff to Play())
         // open the audio file
         final File file = new File("./src/library/blues.wav");
 
@@ -245,8 +290,7 @@ public class SpotifyLikeApp {
 
             // get input stream
             final AudioInputStream in = getAudioInputStream(file);
-            
-            // 5 seconds is 5000, 
+
             audioClip.open(in);
             audioClip.setMicrosecondPosition(0);
             audioClip.loop(Clip.LOOP_CONTINUOUSLY);
