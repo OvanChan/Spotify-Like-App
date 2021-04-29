@@ -77,7 +77,7 @@ public class SpotifyLikeApp {
         // Read the JSON data file
         String pathToFile = "src/songList.json";
         JSONArray jsonData = ReadJSONArrayFile(pathToFile);
-
+        
         // create a scanner for user input
         Scanner input = new Scanner(System.in);
         
@@ -149,7 +149,7 @@ public class SpotifyLikeApp {
                 // Integer songSelection = songPick.nextInt();
                 // songPick.close();
 
-                play(input);
+                play(input, jsonData);
                 break;
 
             case "q":
@@ -164,8 +164,7 @@ public class SpotifyLikeApp {
 
 
     public static void Library(JSONArray jsonData) {
-            
-    
+                
             // loop over list
             String title;
             String artist;
@@ -199,7 +198,8 @@ public class SpotifyLikeApp {
     /*
      * plays an audio file
      */
-    public static void play(Scanner input) {
+    public static void play(Scanner input, JSONArray jsonData) {
+        
         // Scanner input;
         String songSelect;
         System.out.println("-->Play<--");
@@ -207,7 +207,26 @@ public class SpotifyLikeApp {
         songSelect = input.nextLine();
         System.out.println("You've selected:" + songSelect);
         
+        String title;
+        String artist;
+        String year;
+        String genre;
+        String filePath;
+                           
+        JSONObject obj;
+            for (Integer i =  0; i < jsonData.size() ; i++) {
+                // parse the object and pull out the name and birthday
+                obj = (JSONObject) jsonData.get(i);
+                title = (String) obj.get("title");
+                artist = (String) obj.get("artist");
+                year = (String) obj.get("year");
+                genre = (String) obj.get("genre");
+                filePath = (String) obj.get("filePath");                    
+            }
+        }
 
+        jsonData.get(filePath);
+        
         // open the audio file
         final File file = new File("./src/library/blues.wav");
 
@@ -219,7 +238,8 @@ public class SpotifyLikeApp {
 
             // get input stream
             final AudioInputStream in = getAudioInputStream(file);
-
+            
+            // 5 seconds is 5000, 
             audioClip.open(in);
             audioClip.setMicrosecondPosition(0);
             audioClip.loop(Clip.LOOP_CONTINUOUSLY);
