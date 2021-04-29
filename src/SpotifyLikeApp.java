@@ -31,7 +31,7 @@ public class SpotifyLikeApp {
     String status;
     Long position;
     static Clip audioClip;
-    static Map<String, JSONObject> lookUp = new HashMap<String, JSONObject>();
+    
 
     public static JSONArray ReadJSONArrayFile(String fileName) {
 
@@ -42,9 +42,9 @@ public class SpotifyLikeApp {
         try (FileReader reader = new FileReader(fileName))
         {
             //Read JSON file
-            Object value = jsonParser.parse(reader);
+            Object obj = jsonParser.parse(reader);
 
-            songList = (JSONArray) value;
+            songList = (JSONArray) obj;
             // System.out.println(songList);
 
         } catch (FileNotFoundException e) {
@@ -77,31 +77,7 @@ public class SpotifyLikeApp {
         // Read the JSON data file
         String pathToFile = "src/songList.json";
         JSONArray jsonData = ReadJSONArrayFile(pathToFile);
-
-<<<<<<< HEAD
-        // declaring strings
-        String title;
-        String artist;
-        String year;
-        String genre;
-        String filePath;
-
-        JSONObject value;
-                for (Integer i =  0; i < jsonData.size() ; i++) {
-    
-                    // parse the object and pull out the name and birthday
-                    value = (JSONObject) jsonData.get(i);
-                    title = (String) value.get("title");
-                    artist = (String) value.get("artist");
-                    year = (String) value.get("year");
-                    genre = (String) value.get("genre");
-                    filePath = (String) value.get("filePath");
-
-                    lookUp.put(title, value); 
-                }
-
-=======
->>>>>>> parent of 527a60b (Move JSON stuff to Play())
+        
         // create a scanner for user input
         Scanner input = new Scanner(System.in);
         
@@ -150,6 +126,7 @@ public class SpotifyLikeApp {
      */
     public static void handleMenu(String userInput, Scanner input, JSONArray jsonData) {
         
+        
         switch(userInput) {
 
             case "h":
@@ -162,7 +139,7 @@ public class SpotifyLikeApp {
 
             case "l":
                 System.out.println("-->Library<--");
-                Library();
+                Library(jsonData);
                 break;
                 
             case "p":
@@ -172,7 +149,7 @@ public class SpotifyLikeApp {
                 // Integer songSelection = songPick.nextInt();
                 // songPick.close();
 
-                play(input);
+                play(input, jsonData);
                 break;
 
             case "q":
@@ -186,40 +163,8 @@ public class SpotifyLikeApp {
     }
 
 
-<<<<<<< HEAD
-    public static void Library() {
-            
-        String title;
-        String artist;
-        String year;
-        String genre;
-        String filePath;
-        // loop over list
-        // System.out.println(lookUp);
-        
-        for (Map.Entry<String, JSONObject> entry : lookUp.entrySet())
-        {
-        String key = entry.getKey();
-        JSONObject value = entry.getValue();
-        title = (String) value.get("title");
-        artist = (String) value.get("artist");
-        year = (String) value.get("year");
-        genre = (String) value.get("genre");
-        filePath = (String) value.get("filePath");
-
-        System.out.println("title = " + title);
-        System.out.println("artist = " + artist);
-        System.out.println("year = " + year);
-        System.out.println("genre = " + genre);
-        System.out.println("filePath = " + filePath);
-        System.out.println("");
-
-        }
-            
-=======
     public static void Library(JSONArray jsonData) {
-            
-    
+                
             // loop over list
             String title;
             String artist;
@@ -249,16 +194,12 @@ public class SpotifyLikeApp {
                     
                 }
             }
->>>>>>> parent of 527a60b (Move JSON stuff to Play())
 
     /*
      * plays an audio file
      */
-    public static void play(Scanner input) {
-<<<<<<< HEAD
+    public static void play(Scanner input, JSONArray jsonData) {
         
-=======
->>>>>>> parent of 527a60b (Move JSON stuff to Play())
         // Scanner input;
         String songSelect;
         System.out.println("-->Play<--");
@@ -266,19 +207,26 @@ public class SpotifyLikeApp {
         songSelect = input.nextLine();
         System.out.println("You've selected:" + songSelect);
         
-<<<<<<< HEAD
-        
+        String title;
+        String artist;
+        String year;
+        String genre;
+        String filePath;
                            
+        JSONObject obj;
+            for (Integer i =  0; i < jsonData.size() ; i++) {
+                // parse the object and pull out the name and birthday
+                obj = (JSONObject) jsonData.get(i);
+                title = (String) obj.get("title");
+                artist = (String) obj.get("artist");
+                year = (String) obj.get("year");
+                genre = (String) obj.get("genre");
+                filePath = (String) obj.get("filePath");                    
+            }
+        }
+
         
-
-            JSONObject result = lookUp.get(songSelect);
-            System.out.println("This person's birthday is on " + result);
-
-       
         
-=======
-
->>>>>>> parent of 527a60b (Move JSON stuff to Play())
         // open the audio file
         final File file = new File("./src/library/blues.wav");
 
@@ -290,7 +238,8 @@ public class SpotifyLikeApp {
 
             // get input stream
             final AudioInputStream in = getAudioInputStream(file);
-
+            
+            // 5 seconds is 5000, 
             audioClip.open(in);
             audioClip.setMicrosecondPosition(0);
             audioClip.loop(Clip.LOOP_CONTINUOUSLY);
@@ -335,9 +284,9 @@ public class SpotifyLikeApp {
 //         try (FileReader reader = new FileReader(fileName))
 //         {
 //             //Read JSON file
-//             Object value = jsonParser.parse(reader);
+//             Object obj = jsonParser.parse(reader);
  
-//             birthdayList = (JSONArray) value;
+//             birthdayList = (JSONArray) obj;
 //             System.out.println(birthdayList);
  
 //         } catch (FileNotFoundException e) {
@@ -371,16 +320,16 @@ public class SpotifyLikeApp {
 //         String birthday;
 //         String name;
 //         Map<String, String> lookUp = new HashMap<String, String>();
-//         JSONObject value;
+//         JSONObject obj;
 //                 for (Integer i = 1; i <= jsonData.size() ; i++) {
 
             // // parse the object and pull out the name and birthday
-            // value = (JSONObject) jsonData.get(i);
-            // title = (String) value.get("title");
-            // artist = (String) value.get("artist");
-            // year = (String) value.get("year");
-            // genre = (String) value.get("genre");
-            //     filePath = (String) value.get("filePath");
+            // obj = (JSONObject) jsonData.get(i);
+            // title = (String) obj.get("title");
+            // artist = (String) obj.get("artist");
+            // year = (String) obj.get("year");
+            // genre = (String) obj.get("genre");
+            //     filePath = (String) obj.get("filePath");
 
 //             // System.out.println("Track Number = " + i);
 //             // System.out.println("title = " + title);
@@ -403,10 +352,10 @@ public class SpotifyLikeApp {
 // /*
 //         for (int i = 0; i < jsonData.size() ; i++) {
 //             // parse the object and pull out the name and birthday
-//             value = (JSONObject) jsonData.get(i);
-//             name = (String) value.get("name");
+//             obj = (JSONObject) jsonData.get(i);
+//             name = (String) obj.get("name");
 //             if (name == key){
-//             birthday = (String) value.get("birthday");
+//             birthday = (String) obj.get("birthday");
 //             System.out.println("birthday = " + birthday);
 //             }
            
