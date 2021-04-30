@@ -238,7 +238,7 @@ public class SpotifyLikeApp {
                     genre = (String) obj.get("genre");
                     filePath = (String) obj.get("filePath");
     
-                    System.out.println("Track no. = " + (i + 1));
+                      
                     System.out.println("title = " + title);
                     System.out.println("artist = " + artist);
                     System.out.println("year = " + year);
@@ -260,11 +260,11 @@ public class SpotifyLikeApp {
 =======
 >>>>>>> parent of 527a60b (Move JSON stuff to Play())
         // Scanner input;
-        Integer songSelect;
+        String songSelect;
         System.out.println("-->Play<--");
-        System.out.println("Play which track number?");
-        songSelect = input.nextInt();
-        System.out.println("You've selected song number: " + songSelect);
+        System.out.println("Play which song?");
+        songSelect = input.nextLine();
+        System.out.println("You've selected:" + songSelect);
         
 <<<<<<< HEAD
         
@@ -278,18 +278,16 @@ public class SpotifyLikeApp {
                 artist = (String) obj.get("artist");
                 year = (String) obj.get("year");
                 genre = (String) obj.get("genre");
-                filePath = (String) obj.get("filePath");
-
-                if (songSelect == (i + 1)) {
-                    System.out.println("Song found!");
-                    System.out.println(filePath);
-                    return filePath;
-                }
-                                
+                filePath = (String) obj.get("filePath");                    
             }
+<<<<<<< HEAD
         
 =======
 >>>>>>> parent of dcfb443 (Revert to previous pre-tutoring build)
+=======
+        }
+
+>>>>>>> parent of a063872 (Got it to print the corresponding filePath)
         
 
             JSONObject result = lookUp.get(songSelect);
@@ -301,7 +299,7 @@ public class SpotifyLikeApp {
 
 >>>>>>> parent of 527a60b (Move JSON stuff to Play())
         // open the audio file
-        File file = new File(filePath);
+        final File file = new File("./src/library/blues.wav");
 
 
         try {
