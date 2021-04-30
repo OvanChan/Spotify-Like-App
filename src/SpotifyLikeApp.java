@@ -183,7 +183,7 @@ public class SpotifyLikeApp {
                     genre = (String) obj.get("genre");
                     filePath = (String) obj.get("filePath");
     
-                      
+                    System.out.println("Track no. = " + (i + 1));
                     System.out.println("title = " + title);
                     System.out.println("artist = " + artist);
                     System.out.println("year = " + year);
@@ -201,11 +201,11 @@ public class SpotifyLikeApp {
     public static void play(Scanner input, JSONArray jsonData) {
         
         // Scanner input;
-        String songSelect;
+        Integer songSelect;
         System.out.println("-->Play<--");
-        System.out.println("Play which song?");
-        songSelect = input.nextLine();
-        System.out.println("You've selected:" + songSelect);
+        System.out.println("Play which track number?");
+        songSelect = input.nextInt();
+        System.out.println("You've selected song number: " + songSelect);
         
         String title;
         String artist;
@@ -221,14 +221,20 @@ public class SpotifyLikeApp {
                 artist = (String) obj.get("artist");
                 year = (String) obj.get("year");
                 genre = (String) obj.get("genre");
-                filePath = (String) obj.get("filePath");                    
-            }
-        }
+                filePath = (String) obj.get("filePath");
 
+                if (songSelect == (i + 1)) {
+                    System.out.println("Song found!");
+                    System.out.println(filePath);
+                    return filePath;
+                }
+                                
+            }
+        
         
         
         // open the audio file
-        final File file = new File("./src/library/blues.wav");
+        File file = new File(filePath);
 
 
         try {
